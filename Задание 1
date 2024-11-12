@@ -1,0 +1,27 @@
+#include <iostream>
+
+int main() {
+    double k, p, r;
+    int years = 0;
+
+    std::cout << "Введите сумму кредита: ";
+    std::cin >> k;
+
+    std::cout << "Введите годовую процентную ставку : ";
+    std::cin >> p;
+
+    std::cout << "Введите годовую прибыль: ";
+    std::cin >> r;
+
+    double balance = k;
+
+    while (balance > 0) {
+        balance += balance * (p / 100);
+        balance -= r;
+        years++;
+    }
+
+    std::cout << "Это займет" << years << " годы, чтобы погасить долг loan.\n";
+
+    return 0;
+}
