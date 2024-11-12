@@ -1,0 +1,35 @@
+include 
+#include 
+
+using namespace std;
+
+int main() {
+int n, T;
+cout << "Введите количество посетителей: ";
+cin >> n;
+cout << "Введите продолжительность смены в минутах: ";
+cin >> T;
+
+vector<pair<int, int>> visitors(n);
+for (int i = 0; i < n; i++) {
+    cout << "Введите момент прихода " << i+1 <<" посетителя и продолжительность его обслуживания: ";
+    cin >> visitors[i].first >> visitors[i].second;
+}
+
+int clients = 0;
+int total_time = 0;
+int current_time = 0;
+
+for (int i = 0; i < n; i++) {
+    current_time = max(current_time, visitors[i].first);
+    if (current_time + visitors[i].second <= T) {
+        clients++;
+        total_time += visitors[i].second;
+        current_time += visitors[i].second;
+    }
+}
+
+cout << "Количество обслуженных клиентов: " << clients << endl;
+cout << "Рабочее время на обслуживание: " << total_time << " минут" << endl;
+
+return 0;
